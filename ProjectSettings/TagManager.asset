@@ -8,6 +8,7 @@ TagManager:
   - Phone
   - Chair
   - NoChair
+  - Power_soket
   layers:
   - Default
   - TransparentFX

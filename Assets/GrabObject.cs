@@ -27,14 +27,20 @@ public class GrabObject : MonoBehaviour
     // 원거리에서 물체를 잡을 수 있는 거리
     public float remoteGrabDistance = 20;
 
-    static bool[] istouch = new bool[2];
+    bool[] istouch = new bool[2];
+    bool isPhonetouch = false;
 
-    public GameObject[] sign = new GameObject[2];
+    public GameObject[] sign;
     public GameObject phone;
     public GameObject phoneImage;
     public GameObject warningImage;
     public GameObject okImage;
     public GameObject Quest_chair;
+    public GameObject Quest_water;
+    public GameObject[] water = new GameObject[3];
+    public GameObject[] waterImage = new GameObject[3];
+
+    public GameObject Power_socket;
 
 
 
@@ -69,6 +75,17 @@ public class GrabObject : MonoBehaviour
                 Debug.Log("폰");
                 phoneImage.SetActive(true);
                 phone.SetActive(false);
+                isPhonetouch = true;
+                Quest_water.SetActive(true);
+                sign[2].SetActive(false);
+            }
+            if(hit.collider.tag == "Power_soket")
+            {
+                if (isPhonetouch)
+                {
+                    Debug.Log("콘센트");
+                    sign[3].SetActive(false);
+                }
             }
         }
     }
@@ -176,6 +193,7 @@ public class GrabObject : MonoBehaviour
                             sign[1].SetActive(false);
                             Destroy(okImage, 4);
                             istouch[1] = true;
+                            sign[2].SetActive(true);
                         }
                     }
                     
@@ -222,9 +240,29 @@ public class GrabObject : MonoBehaviour
         // 잡은 물체를 손의 자식으로 등록
         grabbedObject.transform.position = targetLocation;
         grabbedObject.transform.parent = ARAVRInput.RHand;
-
-
-
+    }
+    public void Button1()
+    {
+        Debug.Log("위험합니다.");
+        waterImage[0].SetActive(true);
+        Destroy(waterImage[0],3);
+    }
+    public void Button2()
+    {
+        Debug.Log("경고입니다.");
+        waterImage[1].SetActive(true);
+        
+        Destroy(waterImage[1], 3);
+    }
+    public void Button3()
+    {
+        Debug.Log("정답입니다.");
+        for(int i = 0; i < 3; i++)
+            water[i].SetActive(false);
+        waterImage[2].SetActive(true);
+        Destroy(waterImage[2], 3);
+        Destroy(Quest_water, 3);
+        sign[3].SetActive(true);
     }
 }
 
