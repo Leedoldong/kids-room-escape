@@ -39,6 +39,7 @@ public class GrabObject : MonoBehaviour
     public GameObject Quest_water;
     public GameObject[] water = new GameObject[3];
     public GameObject[] waterImage = new GameObject[3];
+    public GameObject[] soketImage = new GameObject[3];
 
     public GameObject Power_socket;
 
@@ -85,6 +86,7 @@ public class GrabObject : MonoBehaviour
                 {
                     Debug.Log("콘센트");
                     sign[3].SetActive(false);
+                    Power_socket.SetActive(true);
                 }
             }
         }
@@ -263,6 +265,26 @@ public class GrabObject : MonoBehaviour
         Destroy(waterImage[2], 3);
         Destroy(Quest_water, 3);
         sign[3].SetActive(true);
+    }
+    public void Button1_soket()
+    {
+        Debug.Log("위험합니다.");
+        soketImage[0].SetActive(true);
+        Destroy(soketImage[0], 3);
+    }
+    public void Button2_soket()
+    {
+        Debug.Log("경고입니다.");
+        soketImage[1].SetActive(true);
+        Destroy(soketImage[1], 3);
+    }
+    public void Button3_soket()
+    {
+        Debug.Log("정답입니다.");
+        soketImage[2].SetActive(true);
+        Destroy(soketImage[2], 3);
+        Destroy(Power_socket, 3);
+        //sign[3].SetActive(true);
     }
 }
 
