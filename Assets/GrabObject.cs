@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GrabObject : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class GrabObject : MonoBehaviour
 
     bool[] istouch = new bool[2];
     bool isPhonetouch = false;
+    public bool isCharge = false;
 
     public GameObject[] sign;
     public GameObject phone;
@@ -42,13 +44,13 @@ public class GrabObject : MonoBehaviour
     public GameObject[] soketImage = new GameObject[3];
 
     public GameObject Power_socket;
-
-
-
+    public GameObject Lock;
+    
     void Start()
     {
         Quest_chair.SetActive(true);
         Destroy(Quest_chair, 8);
+        
     }
 
     // Update is called once per frame
@@ -88,6 +90,11 @@ public class GrabObject : MonoBehaviour
                     sign[3].SetActive(false);
                     Power_socket.SetActive(true);
                 }
+            }
+            if(hit.collider.tag == "Door")
+            {
+                Debug.Log("πÆ - ¿·±›");
+                Lock.SetActive(true);
             }
         }
     }
@@ -285,6 +292,7 @@ public class GrabObject : MonoBehaviour
         Destroy(soketImage[2], 3);
         Destroy(Power_socket, 3);
         //sign[3].SetActive(true);
+        isCharge = true;
     }
 }
 
