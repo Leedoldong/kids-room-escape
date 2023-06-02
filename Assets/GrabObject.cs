@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GrabObject : MonoBehaviour
 {
@@ -27,21 +28,29 @@ public class GrabObject : MonoBehaviour
     // 원거리에서 물체를 잡을 수 있는 거리
     public float remoteGrabDistance = 20;
 
-    static bool[] istouch = new bool[2];
+    bool[] istouch = new bool[2];
+    bool isPhonetouch = false;
+    public bool isCharge = false;
 
-    public GameObject[] sign = new GameObject[2];
+    public GameObject[] sign;
     public GameObject phone;
     public GameObject phoneImage;
     public GameObject warningImage;
     public GameObject okImage;
     public GameObject Quest_chair;
+    public GameObject Quest_water;
+    public GameObject[] water = new GameObject[3];
+    public GameObject[] waterImage = new GameObject[3];
+    public GameObject[] soketImage = new GameObject[3];
 
-
-
+    public GameObject Power_socket;
+    public GameObject Lock;
+    
     void Start()
     {
         Quest_chair.SetActive(true);
         Destroy(Quest_chair, 8);
+        
     }
 
     // Update is called once per frame
@@ -69,6 +78,23 @@ public class GrabObject : MonoBehaviour
                 Debug.Log("폰");
                 phoneImage.SetActive(true);
                 phone.SetActive(false);
+                isPhonetouch = true;
+                Quest_water.SetActive(true);
+                sign[2].SetActive(false);
+            }
+            if(hit.collider.tag == "Power_soket")
+            {
+                if (isPhonetouch)
+                {
+                    Debug.Log("콘센트");
+                    sign[3].SetActive(false);
+                    Power_socket.SetActive(true);
+                }
+            }
+            if(hit.collider.tag == "Door")
+            {
+                Debug.Log("문 - 잠금");
+                Lock.SetActive(true);
             }
         }
     }
@@ -176,6 +202,7 @@ public class GrabObject : MonoBehaviour
                             sign[1].SetActive(false);
                             Destroy(okImage, 4);
                             istouch[1] = true;
+                            sign[2].SetActive(true);
                         }
                     }
                     
@@ -222,9 +249,50 @@ public class GrabObject : MonoBehaviour
         // 잡은 물체를 손의 자식으로 등록
         grabbedObject.transform.position = targetLocation;
         grabbedObject.transform.parent = ARAVRInput.RHand;
-
-
-
+    }
+    public void Button1()
+    {
+        Debug.Log("위험합니다.");
+        waterImage[0].SetActive(true);
+        Destroy(waterImage[0],3);
+    }
+    public void Button2()
+    {
+        Debug.Log("경고입니다.");
+        waterImage[1].SetActive(true);
+        
+        Destroy(waterImage[1], 3);
+    }
+    public void Button3()
+    {
+        Debug.Log("정답입니다.");
+        for(int i = 0; i < 3; i++)
+            water[i].SetActive(false);
+        waterImage[2].SetActive(true);
+        Destroy(waterImage[2], 3);
+        Destroy(Quest_water, 3);
+        sign[3].SetActive(true);
+    }
+    public void Button1_soket()
+    {
+        Debug.Log("위험합니다.");
+        soketImage[0].SetActive(true);
+        Destroy(soketImage[0], 3);
+    }
+    public void Button2_soket()
+    {
+        Debug.Log("경고입니다.");
+        soketImage[1].SetActive(true);
+        Destroy(soketImage[1], 3);
+    }
+    public void Button3_soket()
+    {
+        Debug.Log("정답입니다.");
+        soketImage[2].SetActive(true);
+        Destroy(soketImage[2], 3);
+        Destroy(Power_socket, 3);
+        //sign[3].SetActive(true);
+        isCharge = true;
     }
 }
 

@@ -8,6 +8,8 @@ TagManager:
   - Phone
   - Chair
   - NoChair
+  - Power_soket
+  - Door
   layers:
   - Default
   - TransparentFX
