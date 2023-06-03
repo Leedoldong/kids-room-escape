@@ -10,6 +10,9 @@ TagManager:
   - NoChair
   - Power_soket
   - Door
+  - Toothbrush
+  - Toilet
+  - Vanity
   layers:
   - Default
   - TransparentFX
