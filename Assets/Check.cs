@@ -27,7 +27,17 @@ public class Check : MonoBehaviour
     public void ButtonCheck()
     {
         if (passw[0] == 1 && passw[1] == 2 && passw[2] == 3 && passw[3] == 4)
-            SceneManager.LoadScene("Bath_Room");
+        {
+            if (GameManager.bath_finish == true)
+            {
+                SceneManager.LoadScene("Main");
+            }
+            else
+            {
+                SceneManager.LoadScene("Bath_Room");
+            }
+        }
+            
     }
     public void ButtonExit()
     {
