@@ -30,7 +30,7 @@ public class ChangeImage : MonoBehaviour
     }
     public void Powerd()
     {
-        if (GameObject.Find("Player").GetComponent<GrabObject>().isCharge == true)
+        if (GameObject.Find("Player").GetComponent<GrabObject2>().isCharge == true)
         {
             thisImg.sprite = middle_Power;
             if (time > 0)

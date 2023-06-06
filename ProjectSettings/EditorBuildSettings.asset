@@ -8,10 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: 2dfe9c829de717e4691b7838640071ce
-  - enabled: 1
-    path: Assets/Scenes/Bath_Room.unity
-    guid: b57c5dee8af5eb345b90b6455ee3b354
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Inner_Room.unity
     guid: 78fdac7433229a54188ba4ecc6a4e17f
-  m_configObjects: {}
+  m_configObjects:
+    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 57e6bf827bf90e6469e74dcb01ce4972, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 7fc5a47c388325a48bff78d9c07b905e, type: 2}
