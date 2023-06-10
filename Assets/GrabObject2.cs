@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -68,12 +69,13 @@ public class GrabObject2 : MonoBehaviour
             //물체 놓기
             TryUngrab();
         }
-        if (ARAVRInput.GetDown(ARAVRInput.Button.HandTrigger, ARAVRInput.Controller.LTouch))
+        if (ARAVRInput.GetDown(ARAVRInput.Button.IndexTrigger,ARAVRInput.Controller.RTouch))
         {
             RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            Physics.Raycast(ray, out hit);
-            if(hit.collider.tag == "Phone")
+            Physics.Raycast(ARAVRInput.RHandPosition, ARAVRInput.RHandDirection, out hit, 1000f);
+            Debug.DrawRay(ARAVRInput.RHandPosition, ARAVRInput.RHandDirection * 100f, Color.green);
+            Debug.Log(hit.collider.name);
+            if (hit.collider.tag == "Phone")
             {
                 Debug.Log("폰");
                 phoneImage.SetActive(true);
@@ -110,7 +112,7 @@ public class GrabObject2 : MonoBehaviour
         prevRot = ARAVRInput.RHand.rotation;
 
         //버튼을 놓았다면
-        if (ARAVRInput.GetUp(ARAVRInput.Button.HandTrigger, ARAVRInput.Controller.RTouch))
+        if (ARAVRInput.GetUp(ARAVRInput.Button.IndexTrigger, ARAVRInput.Controller.RTouch))
         {
             //잡지 않은 상태로 전환
             isGrabbing = false;
@@ -137,7 +139,7 @@ public class GrabObject2 : MonoBehaviour
     {
         //[Grab]버튼을 누르면 일정 영역 안에 있는 폭탄을 잡는다
         //1. [Grab] 버튼을 누렀다면 
-        if (ARAVRInput.GetDown(ARAVRInput.Button.HandTrigger, ARAVRInput.Controller.RTouch))
+        if (ARAVRInput.Get(ARAVRInput.Button.IndexTrigger, ARAVRInput.Controller.RTouch))
         {
             // 원거리 물체 잡기를 사용한다면
             if (isRemoteGrab)
