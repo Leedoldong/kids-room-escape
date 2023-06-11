@@ -8,10 +8,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: 2dfe9c829de717e4691b7838640071ce
-  - enabled: 1
-    path: Assets/Scenes/Bath_Room.unity
-    guid: b57c5dee8af5eb345b90b6455ee3b354
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Inner_Room.unity
     guid: 78fdac7433229a54188ba4ecc6a4e17f
+  - enabled: 1
+    path: Assets/Scenes/Main_Option.unity
+    guid: 4d6272840819b6045a6bfeb9e9a7ef8a
+  - enabled: 1
+    path: Assets/Scenes/Bath_Room.unity
+    guid: 32701ab3985f2fe4bb25814b9d9221ba
   m_configObjects: {}
