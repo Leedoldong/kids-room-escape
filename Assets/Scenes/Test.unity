@@ -4405,7 +4405,7 @@ MonoBehaviour:
   - {fileID: 531641755}
   - {fileID: 778237392}
   Power_socket: {fileID: 1537764023}
-  Door: {fileID: 671272955}
+  Lock: {fileID: 0}
 --- !u!1 &861745282
 GameObject:
   m_ObjectHideFlags: 0
@@ -8210,6 +8210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebedbfcf81d3f504d846ccd9b1723fc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  password: {fileID: 0}
 --- !u!114 &1592549663
 MonoBehaviour:
   m_ObjectHideFlags: 0
