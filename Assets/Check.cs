@@ -30,7 +30,7 @@ public class Check : MonoBehaviour
         {
             if (GameManager.bath_finish == true)
             {
-                SceneManager.LoadScene("Main");
+                SceneManager.LoadScene("Video");
             }
             else
             {
