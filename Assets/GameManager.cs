@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     bool iswash = false;
     public GameObject Lock;
 
+    public GameObject towel;
+
     public static bool bath_finish = false;
 
     void Start()
@@ -63,6 +65,13 @@ public class GameManager : MonoBehaviour
                 bath_finish = true;
                 Lock.SetActive(true);
             }
+            if (hit.collider.tag == "Towel")
+            {
+                Debug.Log("수건");
+                towel.SetActive(true);
+                Destroy(towel, 3);
+                signs[3].SetActive(false);
+            }
         }
         if (iswash)
         {
@@ -73,9 +82,10 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                h_count.text = "완료!";
+                h_count.text = "완료! -> 수건으로 가서 물을 닦으세요!";
                 Time.timeScale = 1.0f;
                 Destroy(hands, 2);
+                signs[3].SetActive(true);
                 iswash = false;
             }
         }
