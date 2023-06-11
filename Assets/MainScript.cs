@@ -25,6 +25,9 @@ public class MainScript : MonoBehaviour
     {
         UnityEditor.EditorApplication.isPlaying = false;
     }
-    
 
+    public void OptionButtonCheck()
+    {
+        SceneManager.LoadScene("Main_Option");
+    }
 }
